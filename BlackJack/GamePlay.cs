@@ -8,6 +8,8 @@ namespace BlackJack
 {
     public class GamePlay
     {
+/*        List<Card> cards = new List<Card>();*/
+
         public List<Card> FullDeck()
         {
             List<Card> cards = new List<Card>();
@@ -29,10 +31,13 @@ namespace BlackJack
 
         public List<Card> ShuffledDeck()
         {
+            List<Card> shuffledDeck = FullDeck();
 
+            shuffledDeck = shuffledDeck.OrderBy(c => Guid.NewGuid())
+                       .ToList();
+
+            return (shuffledDeck);
         }
-
-
 
 
 
