@@ -1,12 +1,25 @@
 ﻿using System;
+using System.Linq;
+using BlackJack;
 
-namespace BlackJack.Console
+namespace ConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var gamePlay = new GamePlay();
+            var fullDeck = gamePlay.FullDeck();
+
+            foreach (var card in fullDeck)
+                Console.WriteLine($"{card.Number} {card.Suit}");
+
+
+
+
+
+            Console.ReadLine();
+            }
         }
     }
-}
+
