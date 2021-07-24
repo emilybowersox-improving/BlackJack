@@ -35,10 +35,10 @@ namespace ConsoleApp
     /*        foreach (var card in fullDeck)
                 Console.WriteLine($"{card.Number} {card.Suit}");*/
 
-            fullDeck = fullDeck.OrderBy(c => Guid.NewGuid()).ToList();
+ /*           fullDeck = fullDeck.OrderBy(c => Guid.NewGuid()).ToList();
 
-            /*       foreach (var card in fullDeck)
-                       Console.WriteLine($"{card.Number} {card.Suit}");*/
+            *//*       foreach (var card in fullDeck)
+                       Console.WriteLine($"{card.Number} {card.Suit}");*//*
 
             var dealerCard1 = fullDeck[0];
             var dealerCard2 = fullDeck[1];
@@ -52,42 +52,86 @@ namespace ConsoleApp
             Console.WriteLine($"{playerHand1.Number} {playerHand1.Suit}, {playerHand2.Number} {playerHand2.Suit}"); 
 
             fullDeck.RemoveRange(0, 4);
-            /*      Console.WriteLine(fullDeck.Count());*/
+            *//*      Console.WriteLine(fullDeck.Count());*//*
 
             Console.WriteLine("___________________");
             Console.WriteLine();
 
-            /*          Console.WriteLine("Would you like to stay or hit?");
+            *//*          Console.WriteLine("Would you like to stay or hit?");
                       var userReponse = Console.ReadLine();*/
             string userResponse = "";
+            string userWantsToContinue = "";
 
             do
             {
-                Console.WriteLine("Would you like to stay or hit?");
-                userResponse = Console.ReadLine();
-                if (userResponse == "hit")
+                fullDeck = fullDeck.OrderBy(c => Guid.NewGuid()).ToList();
+
+                /*       foreach (var card in fullDeck)
+                           Console.WriteLine($"{card.Number} {card.Suit}");*/
+
+                var dealerCard1 = fullDeck[0];
+                var dealerCard2 = fullDeck[1];
+                var playerHand1 = fullDeck[2];
+                var playerHand2 = fullDeck[3];
+
+                Console.WriteLine("Dealer:");
+                Console.WriteLine($"{dealerCard1.Number} {dealerCard1.Suit}, {dealerCard2.Number} {dealerCard2.Suit}");
+
+                Console.WriteLine("Player:");
+                Console.WriteLine($"{playerHand1.Number} {playerHand1.Suit}, {playerHand2.Number} {playerHand2.Suit}");
+
+                fullDeck.RemoveRange(0, 4);
+                /*      Console.WriteLine(fullDeck.Count());*/
+
+                Console.WriteLine("___________________");
+                Console.WriteLine();
+
+                do
                 {
-                    var playerCard3 = fullDeck[0];
-                    Console.WriteLine($"Your hand is now {playerCard3.Number} {playerCard3.Suit}, {playerHand1.Number} {playerHand1.Suit}, {playerHand2.Number} {playerHand2.Suit}");
+                    Console.WriteLine("Would you like to stay or hit?");
+                    userResponse = Console.ReadLine();
+                    if (userResponse == "hit")
+                    {
+                        var playerCard3 = fullDeck[0];
+                        Console.WriteLine($"Your hand is now {playerCard3.Number} {playerCard3.Suit}, {playerHand1.Number} {playerHand1.Suit}, {playerHand2.Number} {playerHand2.Suit}");
+                    }
+                    else if (userResponse == "stay")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry i didn't understand that");
+                    }
+                } while (userResponse != "stay");
+
+
+                int dealerHandCount = dealerCard1.Number + dealerCard2.Number;
+                int playerHandCount = playerHand1.Number + playerHand2.Number;
+
+                if (playerHandCount <= 21 && dealerHandCount > 21)
+                {
+                    Console.WriteLine($"You win! The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
                 }
-                else if (userResponse == "stay")
+                else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
-                    break;
+                    Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
+                }
+                else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
+                {
+                    Console.WriteLine($"It's a draw! The dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry i didn't understand that");
+                    Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
                 }
-            } while (userResponse != "stay");
-
-         
-
-   
 
 
+                Console.WriteLine("Would you like to play again? If so, type 'yes'");
+                userWantsToContinue = Console.ReadLine();
+                Console.WriteLine("___________________");
 
-
- 
+            } while (userWantsToContinue == "yes");
 
 
 
@@ -97,6 +141,10 @@ namespace ConsoleApp
 
 
 
+
+
+
+            Console.WriteLine("Goodbye");
             Console.ReadLine();
         }
     }
