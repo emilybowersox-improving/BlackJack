@@ -33,6 +33,13 @@ namespace BlackJack
             return shuffledDeck;
         }
      
+        public List<Card> DealHands()
+        {
+            List<Card> deck = ShuffleDeck();
+            var dealtHands = deck.GetRange(0, 4);
+
+            return dealtHands;
+        }
 
 
 
