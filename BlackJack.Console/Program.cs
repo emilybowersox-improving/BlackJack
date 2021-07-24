@@ -107,7 +107,9 @@ namespace ConsoleApp
 
 
                 int dealerHandCount = dealerCard1.Number + dealerCard2.Number;
+                Console.WriteLine($"Dealer hand count: {dealerHandCount}");
                 int playerHandCount = playerHand1.Number + playerHand2.Number;
+                Console.WriteLine($"Player hand count: {playerHandCount}");
 
                 if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
@@ -120,6 +122,10 @@ namespace ConsoleApp
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
                     Console.WriteLine($"It's a draw! The dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
+                } 
+                else if (playerHandCount > 21)
+                {
+                    Console.WriteLine($"Busted! You went over 21 with a score of {playerHandCount}. The dealer's hand total was {dealerHandCount}.");
                 }
                 else
                 {
