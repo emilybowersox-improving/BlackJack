@@ -8,36 +8,31 @@ namespace BlackJack
 {
     public class GamePlay
     {
-/*        List<Card> cards = new List<Card>();*/
 
-        public List<Card> FullDeck()
+
+
+        public List<Card> GenerateDeck()
         {
-            List<Card> cards = new List<Card>();
-
-            cards = Enumerable.Range(1, 4).SelectMany(s => Enumerable.Range(1, 13).Select(c => new Card()
+            List<Card> fullDeck = new List<Card>();
+            for (int i = 1; i <= 13; i++)
             {
-                Suit = (Suit)s,
-                Number = (Number)c
+                fullDeck.Add(new Card() { Suit = "Heart", Number = i });
+                fullDeck.Add(new Card() { Suit = "Diamond", Number = i });
+                fullDeck.Add(new Card() { Suit = "Club", Number = i });
+                fullDeck.Add(new Card() { Suit = "Spade", Number = i });
             }
-                ))
-                .ToList();
-
-            var allNumbers = (Number[])Enum.GetValues(typeof(Number));
-            var allSuits = (Suit[])Enum.GetValues(typeof(Suit));
-            var fullDeck = allSuits.SelectMany(x => allNumbers.Select(y => new Card { Suit = x, Number = y })).ToList();
-
-            return (fullDeck);
+            return fullDeck;
         }
 
-        public List<Card> ShuffledDeck()
+
+        public List<Card> ShuffleDeck()
         {
-            List<Card> shuffledDeck = FullDeck();
+            List<Card> shuffledDeck = GenerateDeck();
+            shuffledDeck = shuffledDeck.OrderBy(c => Guid.NewGuid()).ToList();
 
-            shuffledDeck = shuffledDeck.OrderBy(c => Guid.NewGuid())
-                       .ToList();
-
-            return (shuffledDeck);
+            return shuffledDeck;
         }
+     
 
 
 
@@ -45,6 +40,19 @@ namespace BlackJack
 
 
 
+
+
+/*        
+
+
+        public List<Card> DealHands()
+        {
+            List<Card> shuffledDeck = ShuffleDeck();
+            *//*        var dealt = shuffledDeck.Take(4);*//*
+            List<Card> dealerHand = new List<Card>();
+            var newhand = dealerHand.AddRange(0, 4);
+
+        }*/
 
 
 

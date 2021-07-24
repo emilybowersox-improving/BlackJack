@@ -8,21 +8,26 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+
             var gamePlay = new GamePlay();
 
-            /*            var fullDeck = gamePlay.FullDeck();
-                        foreach (var card in fullDeck)
-                            Console.WriteLine($"{card.Number} {card.Suit}");*/
+/*          var deck = gamePlay.GenerateDeck();
+            foreach (var card in deck)
+            Console.WriteLine($"{card.Number} {card.Suit}");*/
 
-
-            var shuffledDeck = gamePlay.ShuffledDeck();
-            foreach (var card in shuffledDeck)
+            var deck = gamePlay.ShuffleDeck();
+            foreach (var card in deck)
             Console.WriteLine($"{card.Number} {card.Suit}");
 
 
 
+
+ 
+
+
+
             Console.ReadLine();
-            }
         }
     }
+}
 
