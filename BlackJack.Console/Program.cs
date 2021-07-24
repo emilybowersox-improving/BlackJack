@@ -71,7 +71,14 @@ namespace ConsoleApp
                     {
                         var newPlayerCard = fullDeck[0];
                         playerHand.Add(newPlayerCard);
-                        Console.WriteLine($"Your hand is now {newPlayerCard.Number} {newPlayerCard.Suit}, {playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");
+                        Console.WriteLine("Here is your new hand:");
+                        for(int i = 0; i < playerHand.Count(); i++)
+                        {
+                            Console.WriteLine($"{playerHand[i].Number} {playerHand[i].Suit}");
+                        }
+                        fullDeck.RemoveAt(0);
+                        Console.WriteLine(fullDeck.Count());
+                        /*Console.WriteLine($"Your hand is now {newPlayerCard.Number} {newPlayerCard.Suit}, {playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");*/
                     }
                     else if (userResponse == "stay")
                     {
