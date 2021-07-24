@@ -113,11 +113,15 @@ namespace ConsoleApp
 
                 if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
-                    Console.WriteLine($"You win! The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
+                    Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} and your total was {playerHandCount}");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
                     Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
+                }
+                else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount < playerHandCount))
+                {
+                    Console.WriteLine($"Way to beat the dealer! The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
