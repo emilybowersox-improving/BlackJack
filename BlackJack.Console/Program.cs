@@ -116,6 +116,10 @@ namespace ConsoleApp
 
 
 
+                //add conditionals for 'ties' and for 'blackjack'
+                // then don't display the dealer's first card until the end
+
+
                 //Calculate Player Hand total and display both Player and Dealer Hand totals
                 Console.WriteLine($"Dealer hand count: {dealerHandCount}");
 
