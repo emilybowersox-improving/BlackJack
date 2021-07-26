@@ -14,6 +14,7 @@ namespace ConsoleApp
 
             string userResponse = "";
             string userWantsToContinue = "";
+            int playerHandCount = 0;
 
             do
             {
@@ -78,7 +79,7 @@ namespace ConsoleApp
                         }
                         fullDeck.RemoveAt(0);
                         Console.WriteLine(fullDeck.Count());
-                        /*Console.WriteLine($"Your hand is now {newPlayerCard.Number} {newPlayerCard.Suit}, {playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");*/
+
                     }
                     else if (userResponse == "stay")
                     {
@@ -93,7 +94,12 @@ namespace ConsoleApp
 
                 int dealerHandCount = dealerHand[0].Number + dealerHand[1].Number;
                 Console.WriteLine($"Dealer hand count: {dealerHandCount}");
-                int playerHandCount = playerHand[0].Number + playerHand[1].Number;
+
+                for (int i = 0; i < playerHand.Count(); i++)
+                {
+                    playerHandCount += playerHand[i].Number;
+                }
+               /* int playerHandCount = playerHand[0].Number + playerHand[1].Number;*/
                 Console.WriteLine($"Player hand count: {playerHandCount}");
 
                 if (playerHandCount <= 21 && dealerHandCount > 21)
