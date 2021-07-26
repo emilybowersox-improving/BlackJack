@@ -14,10 +14,11 @@ namespace ConsoleApp
 
             string userResponse = "";
             string userWantsToContinue = "";
-            int playerHandCount = 0;
 
             do
             {
+                int playerHandCount = 0;
+                int dealerHandCount = 0;
                 List<Card> fullDeck = new List<Card>();
                 for (int i = 1; i <= 13; i++)
                 {
@@ -44,13 +45,7 @@ namespace ConsoleApp
                     new Card() {Number = fullDeck[3].Number, Suit = fullDeck[3].Suit }
                 };
 
-                //// working on converting from variables to Lists for dealer and player hands 
 
-
- /*               var dealerCard1 = fullDeck[0];
-                var dealerCard2 = fullDeck[1];
-                var playerHand1 = fullDeck[2];
-                var playerHand2 = fullDeck[3];*/
 
                 Console.WriteLine("Dealer:");
                 Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, {dealerHand[1].Number} {dealerHand[1].Suit}");
@@ -92,15 +87,45 @@ namespace ConsoleApp
                 } while (userResponse != "stay");
 
 
-                int dealerHandCount = dealerHand[0].Number + dealerHand[1].Number;
+
+                // one the User decides to 'stay', time for the dealer to stay or hit
+                for (int i = 0; i < dealerHand.Count(); i++)
+                {
+                    dealerHandCount += dealerHand[i].Number;
+                }
+
+                if (dealerHandCount < 17) { 
+                do
+                {
+                    var newDealerCard = fullDeck[0];
+                    dealerHand.Add(newDealerCard);
+                    Console.WriteLine("Here is the dealer's current hand");
+                    for (int i = 0; i < dealerHand.Count(); i++)
+                    {
+                        Console.WriteLine($"{dealerHand[i].Number} {dealerHand[i].Suit}");
+                    }
+                    fullDeck.RemoveAt(0);
+                    Console.WriteLine($"Remaing number of cards in the deck is: { fullDeck.Count()}");
+                        dealerHandCount = 0;
+                    for (int i = 0; i < dealerHand.Count(); i++)
+                    {
+                        dealerHandCount += dealerHand[i].Number;
+                    }
+                } while (dealerHandCount < 17);
+                }
+
+
+
+                //Calculate Player Hand total and display both Player and Dealer Hand totals
                 Console.WriteLine($"Dealer hand count: {dealerHandCount}");
 
                 for (int i = 0; i < playerHand.Count(); i++)
                 {
                     playerHandCount += playerHand[i].Number;
                 }
-               /* int playerHandCount = playerHand[0].Number + playerHand[1].Number;*/
                 Console.WriteLine($"Player hand count: {playerHandCount}");
+
+
 
                 if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
