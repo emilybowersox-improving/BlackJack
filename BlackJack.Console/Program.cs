@@ -15,6 +15,14 @@ namespace ConsoleApp
             string userResponse = "";
             string userWantsToContinue = "";
 
+            Console.WriteLine("Welcome to BlackJack!");
+            Console.WriteLine("You will be starting off the game with $100 to play with. Every win earns you $5 and every loss costs you $5.");
+            Console.WriteLine("However, everytime you score a BlackJack (21) you earn $7.50. Ready to play?");
+            Console.ReadLine();
+            Console.WriteLine("___________________");
+            Console.WriteLine();
+
+
             do
             {
                 int playerHandCount = 0;
