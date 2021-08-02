@@ -143,35 +143,49 @@ namespace ConsoleApp
 
                 if (playerHandCount == 21 && dealerHandCount != 21)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"Congrats! Your scored a blackjack with your total of {playerHandCount}!");
+                    Console.ResetColor();
                     userPurse += 7.5m;
                 } 
                 else if (dealerHandCount == 21 && playerHandCount != 21) {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Better luck next time- you scored {playerHandCount} but the dealer scored a Blackjack with {dealerHandCount}.");
+                    Console.ResetColor();
                     userPurse -= 5m;
                 }
                 else if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} while your total was {playerHandCount}.");
+                    Console.ResetColor();
                     userPurse += 5;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's total was {dealerHandCount} and your total was {playerHandCount}.");
+                    Console.ResetColor();
                     userPurse -= 5m;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount < playerHandCount))
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"Way to beat the dealer! The dealer's total was {dealerHandCount} but your total was {playerHandCount}.");
+                    Console.ResetColor();
                     userPurse += 5;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"It's a draw! The dealer's total was {dealerHandCount} and your total was also {playerHandCount}.");
+                    Console.ResetColor();
                 } 
                 else if (playerHandCount > 21)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Busted! You went over 21 with a score of {playerHandCount}. The dealer's total was {dealerHandCount}.");
+                    Console.ResetColor();
                     userPurse -= 5m;
                 }
                 else
@@ -181,7 +195,11 @@ namespace ConsoleApp
 
                 Console.WriteLine("___________________");
                 Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"You currently have ${userPurse} remaining.");
+                Console.ResetColor();
+
                 Console.WriteLine();
                 Console.WriteLine("Would you like to play again? If so, type 'yes'");
                 userWantsToContinue = Console.ReadLine();
