@@ -30,8 +30,6 @@ namespace ConsoleApp
 
                 fullDeck = fullDeck.OrderBy(c => Guid.NewGuid()).ToList();
 
-                /*       foreach (var card in fullDeck)
-                           Console.WriteLine($"{card.Number} {card.Suit}");*/
 
                 List<Card> dealerHand = new List<Card>()
                 {
@@ -47,10 +45,10 @@ namespace ConsoleApp
 
 
 
-                Console.WriteLine("Dealer:");
+                Console.WriteLine("Dealer's hand:");
                 Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, ??");
 
-                Console.WriteLine("Player:");
+                Console.WriteLine("Your hand:");
                 Console.WriteLine($"{playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");
 
                 fullDeck.RemoveRange(0, 4);
@@ -112,7 +110,7 @@ namespace ConsoleApp
                 } 
                 
                     Console.WriteLine();
-                    Console.WriteLine("Here was the dealer's final hand");
+                    Console.WriteLine("Here was the dealer's final hand:");
                 for (int i = 0; i < dealerHand.Count(); i++)
                 {
                     Console.WriteLine($"{dealerHand[i].Number} {dealerHand[i].Suit}");
@@ -147,23 +145,23 @@ namespace ConsoleApp
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
-                    Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}.");
+                    Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's total was {dealerHandCount} and your total was {playerHandCount}.");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount < playerHandCount))
                 {
-                    Console.WriteLine($"Way to beat the dealer! The dealer's hand total was {dealerHandCount} but your total was {playerHandCount}.");
+                    Console.WriteLine($"Way to beat the dealer! The dealer's total was {dealerHandCount} but your total was {playerHandCount}.");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
-                    Console.WriteLine($"It's a draw! The dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}.");
+                    Console.WriteLine($"It's a draw! The dealer's total was {dealerHandCount} and your total was also {playerHandCount}.");
                 } 
                 else if (playerHandCount > 21)
                 {
-                    Console.WriteLine($"Busted! You went over 21 with a score of {playerHandCount}. The dealer's hand total was {dealerHandCount}.");
+                    Console.WriteLine($"Busted! You went over 21 with a score of {playerHandCount}. The dealer's total was {dealerHandCount}.");
                 }
                 else
                 {
-                    Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's hand total was {dealerHandCount} and your total was {playerHandCount}.");
+                    Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's total was {dealerHandCount} and your total was {playerHandCount}.");
                 }
 
                 Console.WriteLine("___________________");
@@ -174,14 +172,6 @@ namespace ConsoleApp
                 Console.WriteLine();
 
             } while (userWantsToContinue == "yes");
-
-
-
-
-
-
-
-
 
 
 
