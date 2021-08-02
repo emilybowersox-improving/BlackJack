@@ -48,7 +48,7 @@ namespace ConsoleApp
 
 
                 Console.WriteLine("Dealer:");
-                Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, Mystery Card");
+                Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, ??");
 
                 Console.WriteLine("Player:");
                 Console.WriteLine($"{playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");
@@ -101,12 +101,6 @@ namespace ConsoleApp
                 {
                     var newDealerCard = fullDeck[0];
                     dealerHand.Add(newDealerCard);
- /*                   Console.WriteLine();
-                    Console.WriteLine("Here was the dealer's final hand");
-                    for (int i = 0; i < dealerHand.Count(); i++)
-                    {
-                        Console.WriteLine($"{dealerHand[i].Number} {dealerHand[i].Suit}");
-                    }*/
                     fullDeck.RemoveAt(0);
             /*        Console.WriteLine($"Remaining number of cards in the deck is: { fullDeck.Count()}");*/
                         dealerHandCount = 0;
@@ -117,7 +111,6 @@ namespace ConsoleApp
                 } while (dealerHandCount < 17);
                 } 
                 
-               
                     Console.WriteLine();
                     Console.WriteLine("Here was the dealer's final hand");
                 for (int i = 0; i < dealerHand.Count(); i++)
@@ -128,12 +121,6 @@ namespace ConsoleApp
 
 
 
-
-                    // to do next:
-                    // then don't display the dealer's first card until the end
-                    // for loop to display all of dealer's hand at the end 
-
-
                     //Calculate Player Hand total and display both Player and Dealer Hand totals
                     /*                Console.WriteLine($"Here was the dealer's total hand: {dealerHand[0].Number} {dealerHand[0].Suit}, Mystery Card");*/
 
@@ -141,10 +128,10 @@ namespace ConsoleApp
                 {
                     playerHandCount += playerHand[i].Number;
                 }
-                Console.WriteLine($"Your final card count: {playerHandCount}");
 
+      /*          Console.WriteLine($"Your final card count: {playerHandCount}");
                 Console.WriteLine($"The dealer's final card count: {dealerHandCount}");
-                Console.WriteLine();
+                Console.WriteLine();*/
 
 
                 if (playerHandCount == 21 && dealerHandCount != 21)
@@ -152,23 +139,23 @@ namespace ConsoleApp
                     Console.WriteLine($"Congrats! Your scored a blackjack with your total of {playerHandCount}!");
                 } 
                 else if (dealerHandCount == 21 && playerHandCount != 21) {
-                    Console.WriteLine($"Better luck next time- the dealer scored a Blackjack with {dealerHandCount}");
+                    Console.WriteLine($"Better luck next time- you scored {playerHandCount} but the dealer scored a Blackjack with {dealerHandCount}.");
                 }
                 else if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
-                    Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} and your total was {playerHandCount}");
+                    Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} while your total was {playerHandCount}.");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
-                    Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
+                    Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}.");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount < playerHandCount))
                 {
-                    Console.WriteLine($"Way to beat the dealer! The dealer's hand total was {dealerHandCount} and your total was {playerHandCount}");
+                    Console.WriteLine($"Way to beat the dealer! The dealer's hand total was {dealerHandCount} but your total was {playerHandCount}.");
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
-                    Console.WriteLine($"It's a draw! The dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
+                    Console.WriteLine($"It's a draw! The dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}.");
                 } 
                 else if (playerHandCount > 21)
                 {
@@ -176,7 +163,7 @@ namespace ConsoleApp
                 }
                 else
                 {
-                    Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
+                    Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's hand total was {dealerHandCount} and your total was {playerHandCount}.");
                 }
 
                 Console.WriteLine("___________________");
