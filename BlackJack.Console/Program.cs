@@ -116,7 +116,7 @@ namespace ConsoleApp
 
 
 
-                //add conditionals for 'ties' and for 'blackjack'
+                //add conditionals for 'blackjack'
                 // then don't display the dealer's first card until the end
 
 
@@ -130,8 +130,14 @@ namespace ConsoleApp
                 Console.WriteLine($"Player hand count: {playerHandCount}");
 
 
-
-                if (playerHandCount <= 21 && dealerHandCount > 21)
+                if (playerHandCount == 21 && dealerHandCount != 21)
+                {
+                    Console.WriteLine($"Congrats! Your scored a blackjack with your total of {playerHandCount}!");
+                } 
+                else if (dealerHandCount == 21 && playerHandCount != 21) {
+                    Console.WriteLine($"Better luck next time- the dealer scored a Blackjack with {dealerHandCount}");
+                }
+                else if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
                     Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} and your total was {playerHandCount}");
                 }
