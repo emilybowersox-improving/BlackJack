@@ -48,32 +48,34 @@ namespace ConsoleApp
 
 
                 Console.WriteLine("Dealer:");
-                Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, {dealerHand[1].Number} {dealerHand[1].Suit}");
+                Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, Mystery Card");
 
                 Console.WriteLine("Player:");
                 Console.WriteLine($"{playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");
 
                 fullDeck.RemoveRange(0, 4);
-                Console.WriteLine(fullDeck.Count());
+          /*      Console.WriteLine(fullDeck.Count());*/
 
                 Console.WriteLine("___________________");
-                Console.WriteLine();
 
                 do
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Would you like to stay or hit?");
                     userResponse = Console.ReadLine();
                     if (userResponse == "hit")
                     {
                         var newPlayerCard = fullDeck[0];
                         playerHand.Add(newPlayerCard);
+                        Console.WriteLine("___________________");
+                        Console.WriteLine();
                         Console.WriteLine("Here is your new hand:");
                         for(int i = 0; i < playerHand.Count(); i++)
                         {
                             Console.WriteLine($"{playerHand[i].Number} {playerHand[i].Suit}");
                         }
                         fullDeck.RemoveAt(0);
-                        Console.WriteLine(fullDeck.Count());
+                       /* Console.WriteLine(fullDeck.Count());*/
 
                     }
                     else if (userResponse == "stay")
@@ -99,35 +101,50 @@ namespace ConsoleApp
                 {
                     var newDealerCard = fullDeck[0];
                     dealerHand.Add(newDealerCard);
-                    Console.WriteLine("Here is the dealer's current hand");
+ /*                   Console.WriteLine();
+                    Console.WriteLine("Here was the dealer's final hand");
                     for (int i = 0; i < dealerHand.Count(); i++)
                     {
                         Console.WriteLine($"{dealerHand[i].Number} {dealerHand[i].Suit}");
-                    }
+                    }*/
                     fullDeck.RemoveAt(0);
-                    Console.WriteLine($"Remaing number of cards in the deck is: { fullDeck.Count()}");
+            /*        Console.WriteLine($"Remaining number of cards in the deck is: { fullDeck.Count()}");*/
                         dealerHandCount = 0;
                     for (int i = 0; i < dealerHand.Count(); i++)
                     {
                         dealerHandCount += dealerHand[i].Number;
                     }
                 } while (dealerHandCount < 17);
+                } 
+                
+               
+                    Console.WriteLine();
+                    Console.WriteLine("Here was the dealer's final hand");
+                for (int i = 0; i < dealerHand.Count(); i++)
+                {
+                    Console.WriteLine($"{dealerHand[i].Number} {dealerHand[i].Suit}");
                 }
+                    Console.WriteLine();
 
 
 
-                //add conditionals for 'blackjack'
-                // then don't display the dealer's first card until the end
+
+                    // to do next:
+                    // then don't display the dealer's first card until the end
+                    // for loop to display all of dealer's hand at the end 
 
 
-                //Calculate Player Hand total and display both Player and Dealer Hand totals
-                Console.WriteLine($"Dealer hand count: {dealerHandCount}");
+                    //Calculate Player Hand total and display both Player and Dealer Hand totals
+                    /*                Console.WriteLine($"Here was the dealer's total hand: {dealerHand[0].Number} {dealerHand[0].Suit}, Mystery Card");*/
 
-                for (int i = 0; i < playerHand.Count(); i++)
+                    for (int i = 0; i < playerHand.Count(); i++)
                 {
                     playerHandCount += playerHand[i].Number;
                 }
-                Console.WriteLine($"Player hand count: {playerHandCount}");
+                Console.WriteLine($"Your final card count: {playerHandCount}");
+
+                Console.WriteLine($"The dealer's final card count: {dealerHandCount}");
+                Console.WriteLine();
 
 
                 if (playerHandCount == 21 && dealerHandCount != 21)
@@ -162,10 +179,12 @@ namespace ConsoleApp
                     Console.WriteLine($"I haven't been programmed to handle this kind of scenario yet! But the dealer's hand total was {dealerHandCount} and your total was also {playerHandCount}");
                 }
 
-
+                Console.WriteLine("___________________");
+                Console.WriteLine();
                 Console.WriteLine("Would you like to play again? If so, type 'yes'");
                 userWantsToContinue = Console.ReadLine();
                 Console.WriteLine("___________________");
+                Console.WriteLine();
 
             } while (userWantsToContinue == "yes");
 
