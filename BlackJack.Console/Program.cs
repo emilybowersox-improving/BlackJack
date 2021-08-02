@@ -14,9 +14,10 @@ namespace ConsoleApp
 
             string userResponse = "";
             string userWantsToContinue = "";
+            decimal userPurse = 20m;
 
             Console.WriteLine("Welcome to BlackJack!");
-            Console.WriteLine("You will be starting off the game with $100 to play with. Every win earns you $5 and every loss costs you $5.");
+            Console.WriteLine("You will be starting off the game with $20 to play with. Every win earns you $5 and every loss costs you $5.");
             Console.WriteLine("However, everytime you score a BlackJack (21) you earn $7.50. Ready to play?");
             Console.ReadLine();
             Console.WriteLine("___________________");
@@ -143,21 +144,26 @@ namespace ConsoleApp
                 if (playerHandCount == 21 && dealerHandCount != 21)
                 {
                     Console.WriteLine($"Congrats! Your scored a blackjack with your total of {playerHandCount}!");
+                    userPurse += 7.5m;
                 } 
                 else if (dealerHandCount == 21 && playerHandCount != 21) {
                     Console.WriteLine($"Better luck next time- you scored {playerHandCount} but the dealer scored a Blackjack with {dealerHandCount}.");
+                    userPurse -= 5m;
                 }
                 else if (playerHandCount <= 21 && dealerHandCount > 21)
                 {
                     Console.WriteLine($"You win! The dealer busted with a total of {dealerHandCount} while your total was {playerHandCount}.");
+                    userPurse += 5;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount > playerHandCount))
                 {
                     Console.WriteLine($"Looks like you got beat, better luck next time. The dealer's total was {dealerHandCount} and your total was {playerHandCount}.");
+                    userPurse -= 5m;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount < playerHandCount))
                 {
                     Console.WriteLine($"Way to beat the dealer! The dealer's total was {dealerHandCount} but your total was {playerHandCount}.");
+                    userPurse += 5;
                 }
                 else if (dealerHandCount <= 21 && playerHandCount <= 21 && (dealerHandCount == playerHandCount))
                 {
@@ -166,6 +172,7 @@ namespace ConsoleApp
                 else if (playerHandCount > 21)
                 {
                     Console.WriteLine($"Busted! You went over 21 with a score of {playerHandCount}. The dealer's total was {dealerHandCount}.");
+                    userPurse -= 5m;
                 }
                 else
                 {
@@ -173,6 +180,8 @@ namespace ConsoleApp
                 }
 
                 Console.WriteLine("___________________");
+                Console.WriteLine();
+                Console.WriteLine($"You currently have ${userPurse} remaining.");
                 Console.WriteLine();
                 Console.WriteLine("Would you like to play again? If so, type 'yes'");
                 userWantsToContinue = Console.ReadLine();
