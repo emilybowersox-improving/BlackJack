@@ -14,10 +14,10 @@ namespace ConsoleApp
 
             string userResponse = "";
             string userWantsToContinue = "";
-            decimal userPurse = 20m;
+            decimal userPurse = 10m;
 
             Console.WriteLine("Welcome to BlackJack!");
-            Console.WriteLine("You will be starting off the game with $20 to play with. Every win earns you $5 and every loss costs you $5.");
+            Console.WriteLine("You will be starting off the game with $10 to play with. Every win earns you $5 and every loss costs you $5.");
             Console.WriteLine("However, everytime you score a BlackJack (21) you earn $7.50. Ready to play?");
             Console.ReadLine();
             Console.WriteLine("___________________");
@@ -56,21 +56,27 @@ namespace ConsoleApp
 
                     Console.WriteLine("Dealer's hand:");
                     Console.WriteLine($"{dealerHand[0].Number} {dealerHand[0].Suit}, ??");
-
+                    Console.WriteLine();
                     Console.WriteLine("Your hand:");
                     Console.WriteLine($"{playerHand[0].Number} {playerHand[0].Suit}, {playerHand[1].Number} {playerHand[1].Suit}");
 
                     fullDeck.RemoveRange(0, 4);
-                    /*      Console.WriteLine(fullDeck.Count());*/
 
                     Console.WriteLine("___________________");
 
                     do
                     {
+                        playerHandCount = 0;
+                        for (int i = 0; i < playerHand.Count(); i++)
+                        {
+                            playerHandCount += playerHand[i].Number;
+                        }
+
                         Console.WriteLine();
                         Console.WriteLine("Would you like to stay or hit?");
+
                         userResponse = Console.ReadLine();
-                        if (userResponse == "hit")
+                        if (userResponse == "hit" && playerHandCount <= 21)
                         {
                             var newPlayerCard = fullDeck[0];
                             playerHand.Add(newPlayerCard);
@@ -82,8 +88,12 @@ namespace ConsoleApp
                                 Console.WriteLine($"{playerHand[i].Number} {playerHand[i].Suit}");
                             }
                             fullDeck.RemoveAt(0);
-                            /* Console.WriteLine(fullDeck.Count());*/
-
+                        }
+                        else if (userResponse == "hit" && playerHandCount > 21)
+                        {
+                            Console.WriteLine("You've already gone over 21!");
+                            Console.WriteLine();
+                            break;
                         }
                         else if (userResponse == "stay")
                         {
@@ -132,10 +142,22 @@ namespace ConsoleApp
                     //Calculate Player Hand total and display both Player and Dealer Hand totals
                     /*                Console.WriteLine($"Here was the dealer's total hand: {dealerHand[0].Number} {dealerHand[0].Suit}, Mystery Card");*/
 
-                    for (int i = 0; i < playerHand.Count(); i++)
+
+
+
+
+
+/*                    for (int i = 0; i < playerHand.Count(); i++)
                     {
                         playerHandCount += playerHand[i].Number;
                     }
+*/
+
+
+
+
+
+
 
                     /*          Console.WriteLine($"Your final card count: {playerHandCount}");
                               Console.WriteLine($"The dealer's final card count: {dealerHandCount}");
