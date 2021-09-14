@@ -7,8 +7,10 @@ namespace BlackJack
     {
         public int Number { get; set; }
         public string Suit { get; set; }
-    }
 
-    
+        public string Name { get; set; }
+
+        public int Value { get; set; }
+    }
 
 }

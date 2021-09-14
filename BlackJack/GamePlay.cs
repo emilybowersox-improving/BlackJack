@@ -10,7 +10,7 @@ namespace BlackJack
     {
 
 
-
+/*
         public List<Card> GenerateDeck()
         {
             List<Card> fullDeck = new List<Card>();
@@ -45,7 +45,7 @@ namespace BlackJack
         }
 
 
-
+*/
 
 
 
